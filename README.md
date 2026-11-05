@@ -22,7 +22,7 @@ Gerakan jari telunjuk dan jari tengah menggerakkan lengan wayang secara dinamis 
 ## 3. Target User
 **Masyarakat Umum**, yang mencakup:
 1. **Pelajar & Generasi Muda**: Menggali dan mempelajari kebudayaan tradisional wayang Bali melalui media digital interaktif yang seru, modern, dan mudah diakses.
-2. **Pengunjung Pameran & Kiosk Budaya**: Menikmati pengalaman kilat menjadi dalang digital di pameran seni, museum, atau instalasi publik tanpa repot mengunduh aplikasi.
+2. **Pengunjung Pameran Budaya**: Menikmati pengalaman kilat menjadi dalang digital di pameran seni, museum, atau instalasi publik tanpa repot mengunduh aplikasi.
 3. **Pendidik, Guru, & Penggiat Seni**: Sarana peraga edukasi budaya interaktif di kelas atau lokakarya seni yang dilengkapi asisten tanya jawab cerdas (*AI Tutor*).
 4. **Wisatawan Domestik & Mancanegara**: Mengenal tokoh, karakter, dan filosofi wayang kulit Bali secara intuitif langsung dari gawai pintar.
 
@@ -239,7 +239,7 @@ Aplikasi telah dipublikasikan dan dapat diakses secara langsung melalui tautan r
 
 ## 11. Team Members
 - **I Putu Ngurah Harry Santika** — *Developer*
-- **I Putu Adi Surya Arthayasa** — *Desainner*
+- **I Putu Adi Surya Arthayasa** — *Designner*
 
 ---
 
@@ -257,15 +257,15 @@ Proyek ini terwujud berkat integrasi teknologi, pustaka, dan aset kreatif beriku
 - **Tipografi & Desain Web**:
   - Pustaka font self-hosted `@fontsource/cormorant-garamond` dan `@fontsource/plus-jakarta-sans`.
 - **Aset Seni & Audio**:
-  - Ilustrasi Karakter Seni Wayang Kulit Bali (Twalen, Merdah, Sangut, Delem) dibuat oleh **I Putu Adi Surya Arthayasa**.
-  - Musik Latar Tradisional Gamelan Bali (`assett/backsound.mp3`).
+  - Wayang Dari ---.
+  - Musik Latar Tradisional Gamelan Bali GENDING GENDER WAYANG “PENGRUMRUM” dari **Astadi Jaya** (https://youtu.be/LvChlFqEYRo?si=q9kT6YSc33A6npoa).
 
 ---
 
 ## 13. Known Limitations
 Sebagai produk *Minimum Viable Product* (MVP), sistem memiliki batasan operasional sebagai berikut:
-1. **Katalog Karakter Terbatas**: Database tokoh saat ini baru menyediakan **4 karakter punokawan Wayang Bali** (`wayang01` Twalen, `wayang02` Merdah, `wayang03` Sangut, dan `wayang04` Delem).
+1. **Katalog Karakter Terbatas**: Database tokoh saat ini baru menyediakan **4 karakter punokawan Wayang Bali** ( Twalen, Merdah, Sangut, dan Delem).
 2. **Tanpa Panduan Alur Cerita (Non-story Guided)**: Belum tersedia skenario lakon bertutur, alur narasi drama pementasan, atau panduan babak cerita interaktif seperti halnya pada pertunjukan wayang kulit Bali panggung langsung (*live dalang show*).
 3. **Kapasitas Pelacakan Gerak**: Sistem saat ini dibatasi untuk mendeteksi maksimal 2 tangan fisik secara bersamaan (satu tangan untuk slot kiri dan satu tangan untuk slot kanan).
 4. **Konektivitas Internet AI Tutor**: Fitur AI Tutor mewajibkan koneksi internet aktif untuk menghubungi API server Gemini/OpenAI (tidak dapat digunakan secara offline, meski panggung permainan wayang mendukung cache offline).
-5. **Durasi Sesi Kiosk**: Durasi bermain di panggung dibatasi maksimal 3 menit per sesi (dengan fitur reset otomatis jika tangan tidak terdeteksi selama 25 detik) guna mengoptimalkan kestabilan memori browser dan mencegah panas perangkat pada penggunaan berulang.
+5. **Durasi Sesi**: Durasi bermain di panggung dibatasi maksimal 3 menit per sesi (dengan fitur reset otomatis jika tangan tidak terdeteksi selama 25 detik) guna mengoptimalkan kestabilan memori browser dan mencegah panas perangkat pada penggunaan berulang.
