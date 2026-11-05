@@ -237,9 +237,13 @@ Aplikasi telah dipublikasikan dan dapat diakses secara langsung melalui tautan r
 
 ---
 
-## 11. Team Members
-- **I Putu Ngurah Harry Santika** — *Developer*
-- **I Putu Adi Surya Arthayasa** — *Designner*
+## 11. Known Limitations
+Sebagai produk *Minimum Viable Product* (MVP), sistem memiliki batasan operasional sebagai berikut:
+1. **Katalog Karakter Terbatas**: Database tokoh saat ini baru menyediakan **4 karakter punokawan Wayang Bali** ( Twalen, Merdah, Sangut, dan Delem).
+2. **Tanpa Panduan Alur Cerita (Non-story Guided)**: Belum tersedia skenario lakon bertutur, alur narasi drama pementasan, atau panduan babak cerita interaktif seperti halnya pada pertunjukan wayang kulit Bali panggung langsung (*live dalang show*).
+3. **Kapasitas Pelacakan Gerak**: Sistem saat ini dibatasi untuk mendeteksi maksimal 2 tangan fisik secara bersamaan (satu tangan untuk slot kiri dan satu tangan untuk slot kanan).
+4. **Konektivitas Internet AI Tutor**: Fitur AI Tutor mewajibkan koneksi internet aktif untuk menghubungi API server Gemini/OpenAI (tidak dapat digunakan secara offline, meski panggung permainan wayang mendukung cache offline).
+5. **Durasi Sesi**: Durasi bermain di panggung dibatasi maksimal 3 menit per sesi (dengan fitur reset otomatis jika tangan tidak terdeteksi selama 25 detik) guna mengoptimalkan kestabilan memori browser dan mencegah panas perangkat pada penggunaan berulang.
 
 ---
 
@@ -262,10 +266,12 @@ Proyek ini terwujud berkat integrasi teknologi, pustaka, dan aset kreatif beriku
 
 ---
 
-## 13. Known Limitations
-Sebagai produk *Minimum Viable Product* (MVP), sistem memiliki batasan operasional sebagai berikut:
-1. **Katalog Karakter Terbatas**: Database tokoh saat ini baru menyediakan **4 karakter punokawan Wayang Bali** ( Twalen, Merdah, Sangut, dan Delem).
-2. **Tanpa Panduan Alur Cerita (Non-story Guided)**: Belum tersedia skenario lakon bertutur, alur narasi drama pementasan, atau panduan babak cerita interaktif seperti halnya pada pertunjukan wayang kulit Bali panggung langsung (*live dalang show*).
-3. **Kapasitas Pelacakan Gerak**: Sistem saat ini dibatasi untuk mendeteksi maksimal 2 tangan fisik secara bersamaan (satu tangan untuk slot kiri dan satu tangan untuk slot kanan).
-4. **Konektivitas Internet AI Tutor**: Fitur AI Tutor mewajibkan koneksi internet aktif untuk menghubungi API server Gemini/OpenAI (tidak dapat digunakan secara offline, meski panggung permainan wayang mendukung cache offline).
-5. **Durasi Sesi**: Durasi bermain di panggung dibatasi maksimal 3 menit per sesi (dengan fitur reset otomatis jika tangan tidak terdeteksi selama 25 detik) guna mengoptimalkan kestabilan memori browser dan mencegah panas perangkat pada penggunaan berulang.
+
+
+---
+
+## 13. Team Members
+- **I Putu Ngurah Harry Santika** — *Developer*
+- **I Putu Adi Surya Arthayasa** — *Designner*
+
+---
