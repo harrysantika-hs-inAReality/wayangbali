@@ -266,12 +266,6 @@ Proyek ini terwujud berkat integrasi teknologi, pustaka, dan aset kreatif beriku
 
 ---
 
-
-
----
-
 ## 13. Team Members
 - **I Putu Ngurah Harry Santika** — *Developer*
 - **I Putu Adi Surya Arthayasa** — *Designner*
-
----
