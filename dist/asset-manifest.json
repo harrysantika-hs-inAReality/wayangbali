@@ -1,6 +1,6 @@
 {
-  "version": "38fcd43ea3863e42",
-  "totalBytes": 71900807,
+  "version": "fc6e7c5d31292c6d",
+  "totalBytes": 71901482,
   "files": [
     {
       "url": "/apple-touch-icon.png",
@@ -11,68 +11,68 @@
       "size": 817338
     },
     {
-      "url": "/assets/BitmapFont-DD9n0WIK.js",
-      "size": 48
+      "url": "/assets/BitmapFont-DmWpa8r9.js",
+      "size": 63
     },
     {
-      "url": "/assets/BufferResource-5fnSTEB1.js",
+      "url": "/assets/BufferResource-CNrKHs8H.js",
       "size": 11072
     },
     {
-      "url": "/assets/Cache-E0YTT1Pq.js",
+      "url": "/assets/Cache-DXmU1-hN.js",
       "size": 1098
     },
     {
-      "url": "/assets/CanvasPool-CUZn_ZF5.js",
+      "url": "/assets/CanvasPool-CE5tIVoX.js",
       "size": 756
     },
     {
-      "url": "/assets/CanvasRenderer-Dzjrh5va.js",
-      "size": 52
+      "url": "/assets/CanvasRenderer-iU_MdSqX.js",
+      "size": 67
     },
     {
-      "url": "/assets/Filter-34XOcAFR.js",
-      "size": 38873
+      "url": "/assets/Filter-B7aGGsA3.js",
+      "size": 38920
     },
     {
-      "url": "/assets/GCManagedHash-C7ZScoFo.js",
-      "size": 19273
+      "url": "/assets/GCManagedHash-COYpQigs.js",
+      "size": 19304
     },
     {
-      "url": "/assets/Geometry-D8jkJNKB.js",
-      "size": 65451
+      "url": "/assets/Geometry-DYznhU7p.js",
+      "size": 65459
     },
     {
-      "url": "/assets/GraphicsContext-luqzP0mt.js",
-      "size": 61672
+      "url": "/assets/GraphicsContext-CxVpPF0A.js",
+      "size": 61723
     },
     {
-      "url": "/assets/HandLandmarkerManager-h94vmzNs.js",
-      "size": 154446
+      "url": "/assets/HandLandmarkerManager-DOAIFn0k.js",
+      "size": 154517
     },
     {
-      "url": "/assets/RenderTargetSystem-frzlgzOz.js",
-      "size": 57393
+      "url": "/assets/RenderTargetSystem-B2cnhKT5.js",
+      "size": 57422
     },
     {
-      "url": "/assets/WebGLRenderer-BnkuFsaQ.js",
-      "size": 51
+      "url": "/assets/WebGLRenderer-yL4h-byl.js",
+      "size": 66
     },
     {
-      "url": "/assets/WebGPURenderer-DWH7-Xcw.js",
-      "size": 52
+      "url": "/assets/WebGPURenderer-DxJUwEFT.js",
+      "size": 67
     },
     {
       "url": "/assets/backsound-BLJZtoH5.mp3",
       "size": 6154569
     },
     {
-      "url": "/assets/browserAll-BKXAgmuT.js",
-      "size": 42660
+      "url": "/assets/browserAll-CrzJroIb.js",
+      "size": 42671
     },
     {
-      "url": "/assets/canvasUtils-lXGwQ1Jx.js",
-      "size": 5977
+      "url": "/assets/canvasUtils-6koT-gUk.js",
+      "size": 6020
     },
     {
       "url": "/assets/characters/wayang01/body.png",
@@ -187,24 +187,24 @@
       "size": 23396
     },
     {
-      "url": "/assets/getTextureBatchBindGroup-BuDj_NYx.js",
+      "url": "/assets/getTextureBatchBindGroup-BSvY7EUY.js",
       "size": 342
+    },
+    {
+      "url": "/assets/index-B4KiH_Gt.js",
+      "size": 7238
     },
     {
       "url": "/assets/index-ByNovNHN.css",
       "size": 1008
     },
     {
-      "url": "/assets/index-CS9-6iDB.js",
-      "size": 7216
+      "url": "/assets/init-DLzPRqtL.js",
+      "size": 15614
     },
     {
-      "url": "/assets/init-r3IgM0Ro.js",
-      "size": 15568
-    },
-    {
-      "url": "/assets/main-CvUrpBoz.js",
-      "size": 289032
+      "url": "/assets/main-B5ISuIoH.js",
+      "size": 289288
     },
     {
       "url": "/assets/main-DXys41-4.css",
@@ -235,7 +235,7 @@
       "size": 16136
     },
     {
-      "url": "/assets/webworkerAll-DzvS2vzI.js",
+      "url": "/assets/webworkerAll-DysBBBo7.js",
       "size": 54
     },
     {

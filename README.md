@@ -1,270 +1,271 @@
-# 🎭 Wayang Bali Interactive (Wayang Convis)
+# Wayang Bali Interactive
 
 > **Panggung Wayang Digital Interaktif Berbasis AI, Computer Vision, dan WebAssembly**  
-> *Menghidupkan seni tradisi Wayang Bali melalui gerak tangan secara langsung di depan kamera laptop maupun smartphone tanpa memerlukan sensor tambahan.*
+> Menghidupkan seni tradisi Wayang Kulit Bali melalui gerak tangan secara langsung di depan kamera peramban tanpa memerlukan sensor tambahan.
 
 ---
 
-## 📖 1. Pengenalan Proyek
+## 1. Description
+**Wayang Bali Interactive** adalah aplikasi web interaktif yang memungkinkan siapa saja merasakan pengalaman menjadi seorang *Dalang* wayang kulit Bali digital secara langsung melalui peramban web (*browser*). Dengan memanfaatkan teknologi *Computer Vision* berbasis kecerdasan buatan (**Google MediaPipe Hand Landmarker via WebAssembly**), gerakan tangan fisik pengguna dipindai secara lokal melalui kamera web (laptop maupun smartphone), lalu diterjemahkan menjadi artikulasi gerak tokoh wayang kulit di atas panggung grafis 2D (**PixiJS v8**).
 
-**Wayang Bali Interactive** adalah aplikasi web interaktif yang memungkinkan siapa saja menjadi seorang *Dalang* digital. Dengan memanfaatkan kecerdasan buatan (*Computer Vision*) melalui kamera web (webcam), gerakan tangan fisik Anda akan langsung diterjemahkan menjadi gerakan tokoh Wayang Bali di layar.
-
-### 🌟 Mengapa Proyek Ini Dibuat?
-- **Pelestarian Budaya**: Membawa kebudayaan adiluhung wayang kulit Bali ke generasi muda melalui media digital yang menyenangkan dan interaktif.
-- **Kemudahan Akses**: Berjalan langsung di peramban web (*browser*) tanpa perlu mengunduh aplikasi tambahan atau membeli perangkat sensor khusus yang mahal (seperti Leap Motion atau Kinect). Cukup bermodalkan webcam bawaan laptop atau kamera depan smartphone.
-- **Privasi 100% Terjaga**: Seluruh proses pemindaian gambar dan pengenalan gerakan dilakukan secara **lokal di perangkat pengguna** (*on-device* via WebAssembly). Tidak ada satu pun frame video atau data kamera yang dikirim ke server.
+Gerakan jari telunjuk dan jari tengah menggerakkan lengan wayang secara dinamis dengan algoritma *Two-Bone Inverse Kinematics* (IK), sementara posisi dan sudut telapak tangan mengendalikan badan wayang. Selain panggung permainan, aplikasi ini terintegrasi dengan **AI Tutor Wayang Bali** multimodal (teks dan rekaman suara) yang ditenagai oleh **Google Gemini** dan failover otomatis ke **OpenAI**, siap mengedukasi masyarakat mengenai filosofi, sejarah, dan nilai-nilai tradisi pewayangan Bali.
 
 ---
 
-## ✨ 2. Fitur Utama
-
-1. **Kontrol Dua Tangan Independen (Dual-Hand Control)**:
-   - Tangan kiri fisik mengendalikan tokoh di panggung sebelah kiri (*Left Slot*).
-   - Tangan kanan fisik mengendalikan tokoh di panggung sebelah kanan (*Right Slot*).
-   - Anda dapat memainkan 1 tokoh saja atau 2 tokoh sekaligus bersama teman.
-2. **Artikulasi Lengan Dinamis dengan Inverse Kinematics (Two-Bone IK)**:
-   - Tokoh wayang memiliki sendi pundak dan siku yang bergerak fleksibel seperti wayang kulit asli.
-   - Jari telunjuk menggerakkan lengan utama (depan/kiri).
-   - Jari tengah menggerakkan lengan sekunder (belakang/kanan).
-   - Algoritma *Two-Bone IK* menghitung sudut putaran sendi secara anatomis agar tidak berputar aneh (mencegah putaran 360 derajat yang patah).
-3. **Pelacakan Posisi & Sudut Badan (Palm Tracking & Body Tilt)**:
-   - Posisi telapak tangan (X dan Y) menggerakkan tubuh wayang di panggung.
-   - Kemiringan telapak tangan membuat badan wayang ikut condong secara proporsional.
-   - Untuk membalik arah hadap saat bermain, kepalkan tangan sekitar 0,5 detik, lalu luruskan telunjuk, jari tengah, jari manis, dan kelingking dengan ibu jari dilipat ke telapak. Tahan sekitar 1 detik.
-   - Satu gestur hanya membalik sekali. Kepalkan kembali sebelum mengulang; jeda pengaman 1,8 detik mencegah pembalikan terlalu cepat. Jika pelacakan terputus, kepalkan lagi untuk mengaktifkan gestur. Masing-masing tangan hanya membalik wayang yang dikendalikannya.
-   - Pengujian gestur: `npm run test:gesture` (Node.js 22.6+). Pengaturan durasi ada di `src/controller/FacingGesture.ts`.
-4. **Sistem Penguncian Tangan Stabil (Hand Identity Persistence)**:
-   - Wayang tidak akan tertukar meskipun kedua tangan Anda bersilangan (*hand crossing*) atau berdekatan.
-   - Dilengkapi masa toleransi (*grace period* 300 ms) sehingga jika tangan terhalang sekilas, wayang tidak langsung lenyap atau patah gerakannya.
-5. **Performa Ringan, Adem & Hemat Baterai**:
-   - **Batas Maksimal 30 FPS**: Aplikasi dibatasi pada 30 FPS untuk mencegah CPU/GPU perangkat bekerja terlalu keras dan mencegah perangkat cepat panas (*thermal throttling*).
-   - **Pemisahan Jalur AI & Grafis**: Pembacaan AI (MediaPipe) berjalan santai pada rentang 15–20 FPS, sementara visualisasi wayang dihaluskan (*interpolated*) pada 30 FPS menggunakan mesin rendering PixiJS.
-   - **Mode Hemat Otomatis**: Jika tab browser diminimalkan atau disembunyikan (*background tab*), pelacakan AI otomatis dijeda.
-6. **Desain Antarmuka Eksklusif**:
-   - Tampilan bernuansa kaca modern (*glassmorphism*) dengan sentuhan ornamen emas Bali.
-   - Pengaman orientasi layar (*orientation guard*) yang ramah untuk smartphone dalam posisi *landscape*.
-7. **AI Tutor dengan Dua API (Gemini + OpenAI)**:
-   - Tanya jawab seputar wayang Bali melalui teks atau rekaman suara.
-   - Gemini menjadi layanan utama; OpenAI otomatis mengambil alih saat kuota/rate limit Gemini tercapai (HTTP 429), termasuk transkripsi dan pembacaan jawaban.
+## 2. Problem
+- **Kesenjangan Generasi terhadap Seni Tradisi**: Seni pertunjukan wayang kulit Bali yang sarat akan nilai filosofis dan kearifan lokal makin berjarak dengan generasi muda. Media pengenalan budaya yang ada saat ini umumnya bersifat statis dan pasif (buku teks atau video dokumenter satu arah).
+- **Hambatan Aksesibilitas Perangkat Keras**: Pengalaman interaktif berbasis pelacakan gerak (*motion tracking*) di pameran budaya biasanya membutuhkan sensor perangkat keras yang mahal (seperti Microsoft Kinect atau Leap Motion) dan instalasi aplikasi native yang rumit.
+- **Kekhawatiran Privasi & Efisiensi Komputasi**: Banyak aplikasi kamera modern mengunggah rekaman video ke peladen awan (*cloud*), menimbulkan keraguan privasi pengguna dan pemborosan bandwidth serta panas berlebih pada perangkat seluler.
 
 ---
 
-## 👥 3. Katalog Karakter Wayang
-
-Aplikasi ini menyediakan 4 karakter Wayang Bali yang siap dimainkan:
-
-| ID Tokoh | Nama Karakter | Jumlah Lengan Artikulasi | Kontrol Lengan |
-| :--- | :--- | :--- | :--- |
-| **wayang01** | Wayang 01 | 2 Lengan (Kiri & Kanan) | Telunjuk (Lengan Kiri) & Jari Tengah (Lengan Kanan) |
-| **wayang02** | Wayang 02 | 1 Lengan Tunggal | Telunjuk (Lengan Utama) |
-| **wayang03** | Wayang 03 | 2 Lengan (Kiri & Kanan) | Telunjuk (Lengan Kiri) & Jari Tengah (Lengan Kanan) |
-| **wayang04** | Wayang 04 | 2 Lengan (Kiri & Kanan) | Telunjuk (Lengan Kiri) & Jari Tengah (Lengan Kanan) |
-
-Setiap aset potongan tubuh wayang (badan, tangkai wayang/cempurit, lengan atas, lengan bawah + telapak tangan) dipisahkan secara presisi dalam format gambar PNG berkualitas tinggi.
+## 3. Target User
+**Masyarakat Umum**, yang mencakup:
+1. **Pelajar & Generasi Muda**: Menggali dan mempelajari kebudayaan tradisional wayang Bali melalui media digital interaktif yang seru, modern, dan mudah diakses.
+2. **Pengunjung Pameran & Kiosk Budaya**: Menikmati pengalaman kilat menjadi dalang digital di pameran seni, museum, atau instalasi publik tanpa repot mengunduh aplikasi.
+3. **Pendidik, Guru, & Penggiat Seni**: Sarana peraga edukasi budaya interaktif di kelas atau lokakarya seni yang dilengkapi asisten tanya jawab cerdas (*AI Tutor*).
+4. **Wisatawan Domestik & Mancanegara**: Mengenal tokoh, karakter, dan filosofi wayang kulit Bali secara intuitif langsung dari gawai pintar.
 
 ---
 
-## 🎮 4. Alur Permainan (User Journey)
-
-```
-[ 1. HALAMAN UTAMA ]
-         │
-         ▼
-[ 2. PEMILIHAN WAYANG ] ──▶ Tentukan tokoh untuk Tangan Kiri dan/atau Tangan Kanan
-         │
-         ▼
-[ 3. IZIN KAMERA & KALIBRASI ] ──▶ Tunjukkan tangan selama 1,5 detik di depan kamera
-         │
-         ▼
-[ 4. PANGGUNG INTERAKTIF ] ──▶ Mainkan wayang sesukamu (Durasi sesi: 3 Menit)
-         │
-         ▼
-[ 5. SESI SELESAI ] ──▶ Opsi: Main Lagi / Ganti Wayang / Menu Utama
-```
-
-1. **Menu Utama (*Home*)**: Pengenalan panggung wayang dan tinjauan koleksi karakter.
-2. **Pilih Wayang (*Character Selection*)**: Pengguna memilih tokoh yang ingin dimainkan dan menetapkannya ke tangan kiri (`L`) atau tangan kanan (`R`).
-3. **Mulai Kamera & Kalibrasi (*Start Camera & Calibration*)**: Browser meminta izin webcam. Setelah aktif, pemain memperlihatkan tangan yang dipilih selama 1,5 detik untuk pengenalan identitas tangan awal.
-4. **Panggung Bermain (*Playing*)**: Layar menampilkan wayang di atas panggung. Gerakkan telapak tangan ke kiri/kanan/atas/bawah, miringkan pergelangan tangan, serta tekuk atau lambaikan jari telunjuk dan jari tengah untuk memainkan tangkai lengan wayang.
-5. **Sesi Selesai (*Session Complete*)**: Setelah waktu sesi 3 menit selesai (atau tidak ada tangan selama 25 detik), kamera otomatis dimatikan demi menghemat daya.
+## 4. Key Features
+- **Kontrol Dua Tangan Independen (*Dual-Hand Control*)**: Tangan kiri fisik mengendalikan tokoh di slot kiri panggung, sedangkan tangan kanan mengendalikan slot kanan panggung (dapat memainkan 1 tokoh saja atau 2 tokoh sekaligus bersama teman).
+- **Artikulasi Lengan Dinamis (*Two-Bone Inverse Kinematics*)**: Gerakan jari telunjuk mengendalikan lengan utama dan jari tengah mengendalikan lengan sekunder dengan batasan sendi bahu dan siku anatomis yang lentur dan realistis.
+- **Pelacakan Posisi & Sudut Badan (*Palm Tracking & Body Tilt*)**: Posisi telapak tangan menggerakkan translasi badan wayang, dan sudut kemiringan tangan membuat wayang condong secara proporsional.
+- **Gestur Balik Arah Hadap (*Facing Flip Gesture*)**: Gestur alami tangan (mengepal sekitar 0,5 detik lalu meluruskan 4 jari) untuk membalikkan orientasi hadap wayang di panggung dengan jeda pengaman (*cooldown*).
+- **Identitas Tangan Persisten (*Hand Identity Persistence*)**: Wayang tidak akan tertukar meskipun kedua tangan saling bersilangan (*hand crossing*) atau terhalang sesaat (*grace period* 300 ms).
+- **AI Tutor Wayang Bali Multimodal (Teks & Suara)**: Fitur tanya jawab interaktif seputar sejarah, karakter, dan tradisi wayang Bali melalui input teks maupun rekaman suara langsung dari mikrofon browser.
+- **Dua Penyedia AI (*Gemini Primary + OpenAI Automatic Fallback*)**: Menggunakan Google Gemini sebagai mesin utama dan secara otomatis dialihkan ke OpenAI saat kuota/rate limit (HTTP 429) tercapai.
+- **Sintesis Suara & Audio Budaya**: Jawaban tutor dapat didengarkan secara lisan melalui suara AI/sintesis suara perangkat (*Text-to-Speech*), diiringi alunan musik gamelan Bali autentik (*backsound*).
+- **100% Pemrosesan Kamera Lokal & Privasi Terjaga**: Seluruh komputasi visi komputer dijalankan *on-device* di browser pengguna via WebAssembly. Tidak ada satu pun frame video webcam yang dikirim ke server.
+- **Performa Ringan, Adem & Ramah Baterai**: Frame rate terkunci stabil pada maksimal 30 FPS dengan sistem inferensi adaptif dan penjedaan otomatis saat tab diminimalkan (*Page Visibility API*).
+- **Dukungan Cache Offline (PWA) & Antrean Unduhan**: Aset panggung disimpan ke cache peramban via *Service Worker*, serta antrean unduhan aman (*download queue*) agar server tidak kelebihan beban saat traffic ramai.
 
 ---
 
-## 🏛️ 5. Arsitektur Teknis & Cara Kerja Sistem
-
-Aplikasi dibangun dengan arsitektur modular yang bersih menggunakan prinsip **Pemisahan Tanggung Jawab (*Separation of Concerns*)**:
-
-```
- ┌──────────────┐
- │  Kamera Web  │ (640x480 @ 24-30 FPS)
- └──────┬───────┘
-        ▼
- ┌──────────────────────┐
- │   VideoFrameLoop     │ Hanya membaca jika ada frame kamera baru
- └──────┬───────────────┘
-        ▼
- ┌──────────────────────┐
- │ HandLandmarkerManager│ MediaPipe Tasks Vision mendeteksi 21 titik sendi tangan
- └──────┬───────────────┘
-        ▼
- ┌──────────────────────┐
- │   HandTrackManager   │ Menjaga identitas tangan (Kiri/Kanan) agar tidak tertukar
- └──────┬───────────────┘
-        ▼
- ┌──────────────────────┐
- │ HandPuppetController │ Memetakan telapak tangan ke badan & ujung jari ke target lengan
- └──────┬───────────────┘
-        ▼
- ┌──────────────────────┐
- │      TwoBoneIK       │ Menghitung sudut sendi bahu & siku secara anatomis
- └──────┬───────────────┘
-        ▼
- ┌──────────────────────┐
- │      PuppetRig       │ Menggerakkan kontainer hierarki potongan tubuh wayang
- └──────┬───────────────┘
-        ▼
- ┌──────────────────────┐
- │     PixiRenderer     │ Menggambar panggung visual di canvas WebGL (Maksimal 30 FPS)
- └──────────────────────┘
-```
-
-### Penjelasan Modul Kode:
-- **`src/camera/CameraManager.ts`**: Mengatur siklus hidup kamera (permintaan izin browser, pengaturan resolusi ideal 640x480, penutupan *stream* ketika selesai).
-- **`src/camera/VideoFrameLoop.ts`**: Mengoptimalkan pembacaan frame video menggunakan `requestVideoFrameCallback()` agar proses AI tidak membebani perangkat secara berlebihan.
-- **`src/vision/HandLandmarkerManager.ts`**: Menginisialisasi model kecerdasan buatan Google MediaPipe (`hand_landmarker.task`) secara lokal melalui WebAssembly (`wasm`).
-- **`src/tracking/HandTrackManager.ts`**: Algoritma pelacak identitas tangan. Menggunakan posisi, vektor kecepatan, sudut orientasi, dan probabilitas handedness untuk memastikan tangan kiri fisik selalu mengontrol slot wayang kiri dan tangan kanan fisik mengontrol slot wayang kanan.
-- **`src/controller/HandPuppetController.ts`**: Mengolah data koordinat tangan menjadi perintah gerakan wayang, lengkap dengan filter penghalus (*Exponential Moving Average* / EMA) agar wayang tidak bergetar.
-- **`src/puppet/TwoBoneIK.ts`**: Perhitungan matematis *Inverse Kinematics* dua tulang untuk melenturkan sendi bahu dan siku sesuai tarikan jari.
-- **`src/puppet/PuppetRig.ts`**: Struktur hierarki visual 2D wayang berbasis PixiJS (badan, tongkat penggerak, lengan atas, dan lengan bawah).
-- **`src/rendering/PixiRenderer.ts`**: Pengelola panggung grafis WebGL 2D dengan *ticker* khusus yang terkunci stabil di 30 FPS.
-- **`src/app/GameApp.ts`**: Pengendali utama mesin permainan (*State Machine*), transisi antarmuka, penghitung waktu sesi 3 menit, dan pembersihan memori (*garbage collection*).
+## 5. Tech Stack
+- **Frontend**:
+  - **Bahasa**: TypeScript 7 (Strict Mode)
+  - **Engine Grafis 2D**: PixiJS v8 (WebGL Renderer)
+  - **Computer Vision**: Google MediaPipe Tasks Vision (`@mediapipe/tasks-vision` v1.0.1 - WebAssembly / WASM)
+  - **Styling & UI**: Semantic HTML5 + Modern Vanilla CSS3 (Glassmorphism & Responsive Flex/Grid)
+  - **Bundler & Tooling**: Vite 8
+  - **Tipografi**: `@fontsource/cormorant-garamond` & `@fontsource/plus-jakarta-sans` (Self-hosted offline fonts)
+  - **Browser APIs**: `requestVideoFrameCallback()`, MediaRecorder API, Web Speech API (SpeechSynthesis), Service Worker API
+- **Backend**:
+  - **Bahasa / Runtime**: PHP >= 8.1
+  - **Ekstensi PHP**: `ext-curl`, `ext-mbstring`
+  - **Fungsi Backend**: Proxy aman pemanggilan API AI (Gemini & OpenAI), validasi kontainer audio (MP4, WebM, OGG), pembatasan kuota (*rate limiting*), dan antrean unduhan aset (`queue.php`).
+- **Database**:
+  - **Stateless / No Database**: Aplikasi tidak memerlukan database relasional (SQL) maupun NoSQL.
+  - Data katalog dan konfigurasi tokoh didefinisikan secara *data-driven* melalui file TypeScript (`src/puppet/characters/catalog.ts`).
+  - Pembatasan kuota harian AI Tutor disimpan secara atomik melalui file lock cache (`wayangbali-tutor-budget.json` via PHP `flock`).
+- **Hosting**:
+  - **Web Server**: Apache Web Server (dengan modul `mod_rewrite`, `.htaccess`, dan runtime PHP 8.1+)
+  - **Domain**: `wayangbali.hikari.my.id`
 
 ---
 
-## 🛠️ 6. Teknologi yang Digunakan
-
-- **Bahasa Pemrograman**: TypeScript (Strict Mode)
-- **Bundler & Tooling**: Vite
-- **Engine Computer Vision**: Google MediaPipe Tasks Vision (`@mediapipe/tasks-vision`)
-- **Engine Grafis 2D**: PixiJS v8
-- **Antarmuka & Styling**: Modern Semantic HTML5 & Vanilla CSS3 (Glassmorphism & Responsive Flex/Grid)
+## 6. AI Implementation
+- **Model/API**:
+  - **Google Gemini API**: Model `gemini-3.5-flash-lite` (Penyedia AI utama untuk penalaran teks dan input rekaman audio).
+  - **OpenAI API (Fallback Otomatis)**: Model `gpt-4.1-mini` (Teks jawaban), `gpt-transcribe` / `whisper-1` (Transkripsi rekaman audio suara pengguna), dan `gpt-4o-mini-tts` (Sintesis audio ucapan MP3) jika Gemini mengalami HTTP 429 atau kuota habis.
+  - **Google MediaPipe Hand Landmarker (`hand_landmarker.task`)**: Model Computer Vision on-device (WASM).
+- **AI Function**:
+  - **Pelacakan Sendi Tangan (*Pose Estimation*)**: Memindai dan melacak 21 titik sendi 3D tangan secara *real-time* untuk menggerakkan rig boneka wayang.
+  - **Cultural Knowledge Tutor**: Berperan sebagai pemandu budaya yang menjawab pertanyaan pengguna seputar filosofi, tokoh, kisah pewayangan, dalang, dan tradisi Wayang Bali secara ringkas (maks. 2 kalimat / ~55 kata) dengan sistem pengaman penolakan topik di luar Wayang Bali.
+  - **Transkripsi Suara (*Speech-to-Text*)**: Mengonversi ucapan pertanyaan lisan pengguna dari mikrofon menjadi teks pertanyaan pada ruang obrolan (*chat*).
+  - **Sintesis Ucapan (*Text-to-Speech*)**: Membacakan jawaban edukasi secara lisan kepada pengguna.
+- **Input**:
+  - **Computer Vision**: Frame video kamera webcam lokal pengguna (resolusi optimal 640×480 @ 24–30 FPS).
+  - **AI Tutor**: Teks pertanyaan pengguna (panjang 1–300 karakter) **atau** rekaman audio suara mikrofon pengguna (format MP4, WebM, atau OGG; durasi maksimal 15 detik; ukuran payload ≤ 256 KiB).
+- **Output**:
+  - **Computer Vision**: Koordinat 21 landmark sendi tangan ternormalisasi (X, Y, Z), deteksi tangan kiri/kanan (*handedness*), dan tingkat keyakinan (*confidence score*).
+  - **AI Tutor**: Respon teks jawaban edukasi Wayang Bali (JSON payload), transkripsi teks pertanyaan pengguna (jika input suara), dan suara lisan jawaban (Web Speech API audio atau stream MP3).
 
 ---
 
-## 🚀 7. Cara Menjalankan Proyek
+## 7. Architecture
 
-### Prasyarat
-- **Node.js 22.6 atau lebih baru** (NPM ikut terpasang). Versi ini dibutuhkan oleh Vite 8 dan `npm run test:gesture`.
-- **PHP 8.1+** dengan ekstensi `curl` dan `mbstring`. Hanya dibutuhkan untuk AI Tutor; di Windows bisa memakai PHP bawaan Laragon/XAMPP.
-- Browser modern dengan WebGL dan WebAssembly (Chrome, Edge, Firefox, atau Safari terbaru).
-- Webcam atau kamera laptop yang berfungsi.
-
-Buka terminal di folder proyek, lalu pasang dependensi (cukup sekali):
-```bash
-npm install
+### 7.1 Diagram Pipeline Gameplay (Computer Vision & Panggung 2D)
+```mermaid
+flowchart TD
+    A["Kamera Webcam (640x480 @ 24-30 FPS)"] --> B["VideoFrameLoop (requestVideoFrameCallback)"]
+    B --> C["MediaPipe HandLandmarker (WASM Lokal, 15-20 FPS)"]
+    C --> D["HandTrackManager (Identitas Tangan Kiri/Kanan & Grace Period 300ms)"]
+    D --> E["HandPuppetController (EMA Smoothing & FacingGesture)"]
+    E --> F["TwoBoneIK (Kalkulasi Sudut Bahu & Siku)"]
+    F --> G["PuppetRig (Hierarki Potongan Tubuh Wayang)"]
+    G --> H["PixiRenderer (Panggung 2D WebGL, Terkunci Maks 30 FPS)"]
 ```
 
-### ⭐ Cara termudah — satu perintah (Vite + PHP)
-```bash
-npm run serve-all
+### 7.2 Diagram Pipeline AI Tutor (Dual-Provider Fallback)
+```mermaid
+flowchart LR
+    User["Pengguna (Teks / Mikrofon)"] --> Frontend["Frontend (Tutor.ts / VoiceRecorder.ts)"]
+    Frontend --> Backend["PHP Backend Proxy (public/tutor.php -> server/tutor.php)"]
+    
+    Backend --> BudgetCheck{"Cek Kuota & Rate Limit Harian?"}
+    BudgetCheck -- "Lewat Batas" --> ErrorLimit["Kembalikan HTTP 429"]
+    BudgetCheck -- "Aman" --> TryGemini["Google Gemini API (gemini-3.5-flash-lite)"]
+    
+    TryGemini -- "Sukses (200 OK)" --> FormatOut["Format JSON (Jawaban & Transkripsi)"]
+    TryGemini -- "HTTP 429 / Kuota Habis" --> TryOpenAI["Fallback: OpenAI API (gpt-4.1-mini / Whisper / TTS)"]
+    TryOpenAI --> FormatOut
+    
+    FormatOut --> Frontend
+    Frontend --> OutputUI["Bubble Chat UI + Sintesis Suara Lisan"]
 ```
-Buka `http://localhost:5173`. Perintah ini menjalankan server Vite (dengan hot reload) **dan** server PHP di port `8124` sekaligus; `/tutor.php` dan `/queue.php` otomatis diteruskan ke PHP, jadi AI Tutor ikut berjalan tanpa perlu build. Isi `GEMINI_API_KEY` dan `OPENAI_API_KEY` di `.env` untuk mengaktifkan dua layanan tutor (lihat Opsi B langkah 1). Tekan `Ctrl+C` untuk menghentikan keduanya.
-Port PHP bisa diganti: `PHP_PORT=9000 npm run serve-all` (PowerShell: `$env:PHP_PORT=9000; npm run serve-all`). Jika `php` tidak ada di PATH, set variabel `PHP` ke lokasi `php.exe`.
 
-### Opsi A — Main wayang saja (paling cepat)
-```bash
-npm run dev
-```
-Buka `http://localhost:5173`, lalu izinkan kamera.
-Skrip `predev` otomatis menyalin runtime WebAssembly MediaPipe ke `public/mediapipe/wasm/`.
+---
 
-> AI Tutor **tidak berjalan** di mode ini karena server Vite tidak mengeksekusi PHP. Gunakan `npm run serve-all` atau Opsi B untuk mencoba tutor.
+## 8. Installation / Local Run
 
-### Opsi B — Uji hasil build produksi dengan AI Tutor
-1. Salin konfigurasi, lalu isi `GEMINI_API_KEY` dan `OPENAI_API_KEY` untuk cadangan di file `.env` (cukup sekali):
+### Prasyarat Sistem
+- **Node.js 22.6 atau lebih baru** (NPM terpasang).
+- **PHP 8.1 atau lebih baru** dengan ekstensi `curl` dan `mbstring` aktif (hanya diperlukan untuk menjalankan AI Tutor).
+- Peramban web modern yang mendukung WebGL dan WebAssembly (Google Chrome, Microsoft Edge, Mozilla Firefox, atau Safari terbaru).
+- Kamera web (webcam) yang berfungsi baik.
+
+---
+
+### Langkah Instalasi & Menjalankan
+
+1. **Klon Repositori & Masuk ke Direktori Proyek**:
    ```bash
-   cp .env.example .env    # Windows PowerShell: Copy-Item .env.example .env
+   git clone https://github.com/username/wayangbali.git
+   cd wayangbali
    ```
-2. Build, lalu jalankan server PHP bawaan:
+
+2. **Pasang Dependensi**:
    ```bash
-   npm run build
-   php -S 127.0.0.1:8123 -t dist
+   npm install
    ```
-3. Buka `http://127.0.0.1:8123`.
 
-Catatan:
-- Port boleh diganti (misalnya `8000`) selama tidak dipakai program lain.
-- Perubahan di `src/` perlu `npm run build` ulang. Perubahan di `server/tutor.php` langsung berlaku tanpa build.
-- Jika `GEMINI_API_KEY` kosong tetapi `OPENAI_API_KEY` terisi, tutor langsung memakai OpenAI. Jika kedua key kosong, tutor menampilkan pesan *"AI tutor belum aktif…"*; permainan tetap berjalan normal.
+3. **Konfigurasi Environment Variables**:
+   Salin berkas contoh `.env.example` menjadi `.env`:
+   ```bash
+   # Di Linux / macOS:
+   cp .env.example .env
 
-### Layar persiapan awal
+   # Di Windows (PowerShell):
+   Copy-Item .env.example .env
+   ```
+   Buka file `.env` dan masukkan API Key Anda (lihat bagian [9. Environment Variables](#9-environment-variables)).
 
-Saat aplikasi menyiapkan aset dan mengunduh paket pada kunjungan awal, layar menampilkan **“Mohon tunggu, sedang menyiapkan aset dan aplikasi”**. Persentase dan bar progres tetap ditampilkan dari 0% hingga 100%, tanpa teks ukuran file, jumlah MB, maupun keterangan “Paket hanya diunduh sekali di perangkat ini”. Pengunjung diminta tidak menutup halaman selama proses berlangsung.
+4. **Jalankan Aplikasi**:
+   
+   - **Opsi Rekomendasi — Satu Perintah (Game + AI Tutor)**:
+     ```bash
+     npm run serve-all
+     ```
+     Buka peramban di `http://localhost:5173`. Perintah ini menjalankan server Vite (dengan hot-reload) dan server lokal PHP di port `8124` secara bersamaan. Panggilan `/tutor.php` otomatis diteruskan ke PHP backend.
 
-Progres mengikuti data yang diterima dan ditampilkan selama minimal 2 detik sebelum berpindah layar. Aset disimpan dalam cache perangkat agar kunjungan berikutnya lebih cepat; AI Tutor tetap memerlukan internet.
+   - **Opsi Khusus Permainan Saja (Tanpa AI Tutor)**:
+     ```bash
+     npm run dev
+     ```
+     Buka `http://localhost:5173`. Mode ini hanya menyalakan frontend Vite. Panggung permainan wayang dapat dimainkan penuh, tetapi AI Tutor tidak aktif.
 
-### Kamera & mikrofon
-Browser hanya mengizinkan kamera dan mikrofon di `localhost`/`127.0.0.1` atau di alamat **HTTPS**. Untuk mencoba dari HP, buka aplikasi lewat URL HTTPS (hasil deploy atau tunnel HTTPS).
+   - **Opsi Uji Build Produksi Penuh**:
+     ```bash
+     npm run build
+     php -S 127.0.0.1:8123 -t dist
+     ```
+     Buka `http://127.0.0.1:8123`.
 
-### Perintah lain
-| Perintah | Fungsi |
+---
+
+### Perintah Pengujian & Pengecekan Kode
+| Perintah | Deskripsi |
 |---|---|
-| `npm run serve-all` | Vite dev + PHP sekaligus (game + AI Tutor) |
-| `npm run typecheck` | Cek tipe TypeScript |
-| `npm run test:gesture` | Tes gestur balik arah wayang |
-| `npm run build` | Typecheck + build produksi ke `dist/` + manifest cache offline |
-| `npm run preview` | Pratinjau hasil build tanpa PHP (AI Tutor tidak aktif) |
-| `php -l server/tutor.php` | Cek sintaks backend tutor |
-
-Sebelum commit, pastikan `npm run build`, `npm run test:gesture`, dan `php -l server/tutor.php` lulus.
-
-### Deploy
-Unggah folder `dist/`, `server/`, dan file `.env` dengan struktur direktori yang sama ke hosting Apache + PHP, dengan `dist/` sebagai document root. Detailnya ada di bagian **AI Tutor Wayang Bali** di bawah.
+| `npm run typecheck` | Menjalankan validasi tipe TypeScript (`tsc --noEmit`). |
+| `npm run test:gesture` | Menjalankan unit test logika gestur balik hadap wayang. |
+| `php -l server/tutor.php` | Melakukan linter sintaks berkas backend PHP AI Tutor. |
+| `npm run build` | Melakukan typecheck, build aset produksi ke folder `dist/`, dan membuat manifest cache offline. |
 
 ---
 
-## 💡 8. Tips Bermain untuk Hasil Terbaik
-
-1. **Pencahayaan yang Cukup**: Pastikan ruangan Anda memiliki pencahayaan yang merata agar kamera dapat mengenali sendi-sendi jari dengan jelas.
-2. **Jarak Ideal**: Duduklah sekitar 50 cm hingga 1 meter di depan kamera, sehingga pergelangan tangan dan jari-jemari terlihat utuh di layar.
-3. **Latar Belakang Bersih**: Hindari latar belakang yang terlalu ramai dengan warna yang menyerupai warna kulit tangan.
-4. **Perangkat Smartphone**: Jika membuka melalui ponsel, selalu gunakan posisi **Horizontal / Landscape** agar panggung terlihat luas dan penuh.
-
----
-
-## 📜 9. Lisensi & Hak Cipta
-
-Proyek ini dikembangkan untuk tujuan edukasi, pelestarian budaya tradisional, dan eksplorasi teknologi kreatif berbasis web. Seluruh aset ilustrasi wayang merupakan karya seni digital yang dilindungi hak cipta masing-masing pemilik karya.
-
-## AI Tutor Wayang Bali — Gemini + OpenAI (v0.2.0)
-
-AI Tutor menggunakan **dua penyedia API: Google Gemini sebagai layanan utama dan OpenAI sebagai cadangan otomatis (fallback)**. Pertanyaan dikirim ke Gemini terlebih dahulu; saat Gemini mengembalikan HTTP 429 karena kuota/rate limit, backend melanjutkan pertanyaan tersebut ke OpenAI.
-
-| Penyedia API | Peran | Pertanyaan dan jawaban suara | Konfigurasi key |
-| --- | --- | --- | --- |
-| Google Gemini | Utama | Menerima teks atau rekaman; jawaban dibacakan oleh sintesis suara perangkat | `GEMINI_API_KEY` |
-| OpenAI | Fallback saat Gemini 429; langsung dipakai jika key Gemini kosong | Mentranskripsikan rekaman, menjawab pertanyaan, dan menghasilkan suara MP3 jika **Bacakan jawaban** aktif | `OPENAI_API_KEY` |
-
-Isi kedua key pada `.env` server agar alur utama dan fallback tersedia:
+## 9. Environment Variables
+Konfigurasi rahasia dan parameter server disimpan dalam file `.env` di direktori utama (*root*) proyek. **Gunakan berkas `.env.example` sebagai acuan dan jangan pernah melakukan commit file `.env` asli ke repositori publik.**
 
 ```dotenv
-GEMINI_API_KEY=isi_key_gemini_anda
-OPENAI_API_KEY=isi_key_openai_anda
+# Server-only. Never prefix this key with VITE_.
+GEMINI_API_KEY=your_gemini_api_key_here
+GEMINI_MODEL=gemini-3.5-flash-lite
+GEMINI_MAX_OUTPUT_TOKENS=180
+TUTOR_DAILY_LIMIT=300
+
+OPENAI_API_KEY=your_openai_api_key_here
+OPENAI_MODEL=gpt-4.1-mini
+OPENAI_MAX_OUTPUT_TOKENS=180
+OPENAI_TRANSCRIBE_MODEL=gpt-transcribe
+OPENAI_TTS_MODEL=gpt-4o-mini-tts
+OPENAI_TTS_VOICE=coral
 ```
 
-Kedua key hanya dibaca backend PHP dan tidak boleh dimasukkan ke bundle frontend atau diberi awalan `VITE_`.
+### Rincian Variabel:
+| Variabel | Deskripsi | Default |
+|---|---|---|
+| `GEMINI_API_KEY` | Kunci API Google Gemini untuk layanan AI Tutor utama. | *(Wajib diisi untuk Gemini)* |
+| `GEMINI_MODEL` | Model Google Gemini yang digunakan. | `gemini-3.5-flash-lite` |
+| `GEMINI_MAX_OUTPUT_TOKENS` | Batas maksimum token respon dari Gemini. | `180` (maks keras: 240) |
+| `TUTOR_DAILY_LIMIT` | Batas maksimal total pertanyaan tutor per hari untuk seluruh situs. | `300` |
+| `OPENAI_API_KEY` | Kunci API OpenAI untuk cadangan otomatis (*fallback*). | *(Opsional/Cadangan)* |
+| `OPENAI_MODEL` | Model obrolan OpenAI saat fallback. | `gpt-4.1-mini` |
+| `OPENAI_MAX_OUTPUT_TOKENS` | Batas maksimum token respon dari OpenAI. | `180` |
+| `OPENAI_TRANSCRIBE_MODEL` | Model transkripsi suara OpenAI. | `gpt-transcribe` (`whisper-1`) |
+| `OPENAI_TTS_MODEL` | Model *Text-to-Speech* OpenAI untuk menghasilkan suara MP3. | `gpt-4o-mini-tts` |
+| `OPENAI_TTS_VOICE` | Karakter suara OpenAI untuk pembacaan jawaban. | `coral` |
 
-Menu **AI Tutor** tersedia di beranda dan pemilihan wayang. Empat tokoh ditampilkan sebagai galeri. Pengunjung langsung mengetik pertanyaan atau menekan **Bicara** tanpa memilih tokoh. Tutor membahas semua tokoh, jenis, sejarah, perkembangan, dan tradisi wayang yang hidup di Bali, termasuk yang tidak ada dalam galeri. Izinkan mikrofon, bicara, lalu tekan **Selesai & kirim**; rekaman otomatis selesai setelah 15 detik. Rekaman dikirim melalui backend ke Gemini atau fallback OpenAI dan jawaban dibacakan jika opsi suara aktif. Menggunakan MediaRecorder melalui HTTPS, termasuk format MP4 untuk iPhone, tanpa bergantung pada SpeechRecognition. Dukungan suara Indonesia bergantung perangkat. Teks tetap tersedia jika izin mikrofon ditolak.
+> [!CAUTION]
+> **Keamanan Kunci API:** Seluruh API Key di atas hanya dibaca oleh backend PHP di lingkungan server. **Jangan pernah memberi awalan `VITE_`** pada variabel rahasia ini agar tidak ikut terkompilasi ke dalam bundle JavaScript publik frontend.
 
-Backend PHP `public/tutor.php` (disalin ke `dist/` saat build) memuat `server/tutor.php`. Deploy **dist, server, dan .env** dengan struktur direktori ini tetap utuh. Apache harus mengeksekusi PHP dengan ekstensi curl dan mbstring. `.env` berada di root proyek, di luar document root `dist`; jangan gunakan awalan `VITE_` untuk rahasia.
+---
 
-Salin `.env.example` menjadi `.env`, isi `GEMINI_API_KEY` dan `OPENAI_API_KEY` untuk cadangan, dan beri akses baca hanya kepada pemilik serta grup PHP/Apache. Model default `gemini-3.5-flash-lite`; keluaran model berupa teks, jadi masukan suara direkam browser dan diproses Gemini, lalu jawaban dibacakan sintesis suara perangkat, bukan Gemini Live. Rekaman tidak disimpan oleh aplikasi; rekaman dikirim ke backend/Gemini atau OpenAI; kamera permainan tetap diproses lokal.
+## 10. Deployment
+Aplikasi telah dipublikasikan dan dapat diakses secara langsung melalui tautan resmi:
 
-Batas hemat biaya: pertanyaan teks 300 karakter atau rekaman maksimal 15 detik di browser (payload audio maksimal 256 KiB di server), satu pertanyaan tanpa riwayat, target jawaban dua kalimat/55 kata, maksimum 180 token keluaran (dapat diatur melalui `.env`, batas keras 240). Backend membatasi total 12 permintaan/menit dan default 300/hari UTC untuk seluruh situs. Satu pertanyaan dihitung sekali, termasuk jika memakai fallback; batas situs tidak memicu fallback. Instruksi server menolak topik di luar wayang Bali serta perubahan peran; pembatasan model bukan jaminan absolut. Jangan menyediakan alat atau akses data sensitif ke tutor.
+🌐 **URL Produksi**: [wayangbali.hikari.my.id](https://wayangbali.hikari.my.id)
 
-Verifikasi: `npm run build`, `php -l server/tutor.php`, dan POST JSON ke `/tutor.php` dengan `message` tanpa pilihan `character`, atau `audio: {data: "base64", mimeType: "audio/mp4"}` menggantikan `message`. Format audio: MP4, WebM, OGG; header kontainer dan ukuran divalidasi server. Batas durasi diberlakukan oleh browser, batas ukuran dan jumlah permintaan oleh server. Endpoint dan konfigurasi tidak masuk cache offline. AI memerlukan koneksi internet.
+### Panduan Deployment Server (Apache + PHP):
+1. Jalankan `npm run build` untuk menghasilkan bundel siap rilis di direktori `dist/`.
+2. Unggah direktori `dist/` sebagai *Document Root* (atau letakkan seluruh isinya ke folder `public_html`).
+3. Unggah direktori `server/` dan berkas `.env` sejajar dengan folder publik (di luar akses publik web langsung).
+4. Pastikan Apache mengaktifkan modul `mod_rewrite` dan mengeksekusi PHP versi 8.1+ dengan ekstensi `curl` dan `mbstring`.
+5. Berkas `.htaccess` bawaan secara otomatis mencegah pengunduhan langsung file `.env*` dan mengarahkan endpoint API `/tutor.php` serta `/queue.php`.
 
+---
 
-Fallback OpenAI otomatis berjalan saat Gemini merespons HTTP 429 (kuota/rate limit), atau langsung jika key Gemini kosong. Error lain dan penolakan konten tidak memicu fallback. Isi key asli pada `OPENAI_API_KEY` di `.env`; jangan memakai awalan `VITE_`. Default: `OPENAI_MODEL=gpt-4.1-mini`, `OPENAI_TRANSCRIBE_MODEL=gpt-transcribe`, `OPENAI_TTS_MODEL=gpt-4o-mini-tts`, `OPENAI_TTS_VOICE=coral`, `OPENAI_MAX_OUTPUT_TOKENS=180` (maks. 240). Semua dapat disetel sesuai akses model akun. Transkripsi dikirim dari memori (PHP >= 8.1 dengan curl dan mbstring); rekaman tidak ditulis ke disk.
+## 11. Team Members
+- **I Putu Ngurah Harry Santika** — *Developer*
+- **I Putu Adi Surya Arthayasa** — *Desainner*
 
-Pada fallback, OpenAI menjawab teks dan rekaman suara. Jika **Bacakan jawaban** aktif (`speak: true` pada request), backend juga menghasilkan MP3; jika TTS gagal, teks tetap tampil dan perangkat mencoba membacakannya. Dengarkan ulang menggunakan audio yang sama tanpa request tambahan. Suara berhenti saat merekam, menekan Hentikan suara, berpindah tab, atau keluar tutor. Timeout frontend 85 detik mencakup Gemini dan rangkaian fallback. Deploy seluruh direktori `server/`, termasuk `openai.php`.
+---
+
+## 12. Third-party Resources / Credits
+Proyek ini terwujud berkat integrasi teknologi, pustaka, dan aset kreatif berikut:
+
+- **Library & Frameworks**:
+  - [PixiJS](https://pixijs.com/) (`pixi.js` v8) — Mesin rendering grafis WebGL 2D interaktif.
+  - [Google MediaPipe](https://developers.google.com/mediapipe) (`@mediapipe/tasks-vision`) — Model Computer Vision Hand Landmarker via WebAssembly.
+  - [Vite](https://vitejs.dev/) — Bundler dan alat pengembang frontend modern.
+  - [TypeScript](https://www.typescriptlang.org/) — Fondasi kode bertipe ketat (*strict typing*).
+- **AI Models & API Services**:
+  - [Google Gemini API](https://ai.google.dev/) (`gemini-3.5-flash-lite`) — Layanan penalaran AI multimodal utama.
+  - [OpenAI API](https://openai.com/) (`gpt-4.1-mini`, Whisper Speech-to-Text, Open-AI TTS) — Layanan AI cadangan otomatis (*failover*).
+- **Tipografi & Desain Web**:
+  - Pustaka font self-hosted `@fontsource/cormorant-garamond` dan `@fontsource/plus-jakarta-sans`.
+- **Aset Seni & Audio**:
+  - Ilustrasi Karakter Seni Wayang Kulit Bali (Twalen, Merdah, Sangut, Delem) dibuat oleh **I Putu Adi Surya Arthayasa**.
+  - Musik Latar Tradisional Gamelan Bali (`assett/backsound.mp3`).
+
+---
+
+## 13. Known Limitations
+Sebagai produk *Minimum Viable Product* (MVP), sistem memiliki batasan operasional sebagai berikut:
+1. **Katalog Karakter Terbatas**: Database tokoh saat ini baru menyediakan **4 karakter punokawan Wayang Bali** (`wayang01` Twalen, `wayang02` Merdah, `wayang03` Sangut, dan `wayang04` Delem).
+2. **Tanpa Panduan Alur Cerita (Non-story Guided)**: Belum tersedia skenario lakon bertutur, alur narasi drama pementasan, atau panduan babak cerita interaktif seperti halnya pada pertunjukan wayang kulit Bali panggung langsung (*live dalang show*).
+3. **Kapasitas Pelacakan Gerak**: Sistem saat ini dibatasi untuk mendeteksi maksimal 2 tangan fisik secara bersamaan (satu tangan untuk slot kiri dan satu tangan untuk slot kanan).
+4. **Konektivitas Internet AI Tutor**: Fitur AI Tutor mewajibkan koneksi internet aktif untuk menghubungi API server Gemini/OpenAI (tidak dapat digunakan secara offline, meski panggung permainan wayang mendukung cache offline).
+5. **Durasi Sesi Kiosk**: Durasi bermain di panggung dibatasi maksimal 3 menit per sesi (dengan fitur reset otomatis jika tangan tidak terdeteksi selama 25 detik) guna mengoptimalkan kestabilan memori browser dan mencegah panas perangkat pada penggunaan berulang.
