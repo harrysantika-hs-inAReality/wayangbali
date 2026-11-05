@@ -1,0 +1,7 @@
+node_modules/
+.env
+.env.*
+!.env.example
+
+# Local symlinks created by `npx skills`; restore with `npx skills experimental_install`
+.claude/skills/

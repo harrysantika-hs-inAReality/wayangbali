@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <title>Wayang Bali</title>
+  <defs>
+    <radialGradient id="kelir" cx="50%" cy="34%" r="72%">
+      <stop offset="0" stop-color="#fff4d9"/>
+      <stop offset=".45" stop-color="#ecc58a"/>
+      <stop offset="1" stop-color="#c98b4e"/>
+    </radialGradient>
+  </defs>
+  <!-- Kelir lit by the blencong, with red plangkan trim -->
+  <rect x="1.5" y="1.5" width="61" height="61" rx="14" fill="url(#kelir)" stroke="#5e1e15" stroke-width="3"/>
+  <!-- Gunungan (kayon) shadow -->
+  <path fill="#2b1d14" d="M32 6C38 15 50 27 50 39.5C50 48 43 52 32 52C21 52 14 48 14 39.5C14 27 26 15 32 6Z"/>
+  <path fill="#2b1d14" d="M24 51h16l2 6H22z"/>
+  <!-- Tree of life carved through the leather, so lamplight shows through -->
+  <g fill="none" stroke="#f3d39a" stroke-width="2.6" stroke-linecap="round">
+    <path d="M32 47V20"/>
+    <path d="M32 38L23.5 32M32 38L40.5 32"/>
+    <path d="M32 29.5L26 25M32 29.5L38 25"/>
+  </g>
+</svg>

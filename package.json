@@ -1,0 +1,26 @@
+{
+  "name": "wayang-bali-interactive",
+  "private": true,
+  "version": "0.2.0",
+  "type": "module",
+  "scripts": {
+    "predev": "node scripts/prepare-mediapipe.mjs",
+    "dev": "vite",
+    "typecheck": "tsc --noEmit",
+    "test:gesture": "node --experimental-strip-types --test scripts/facing-gesture.test.mjs",
+    "prebuild": "node scripts/prepare-mediapipe.mjs",
+    "build": "npm run typecheck && vite build && node scripts/generate-cache-manifest.mjs",
+    "preview": "vite preview",
+    "serve-all": "node scripts/serve-all.mjs"
+  },
+  "dependencies": {
+    "@fontsource/cormorant-garamond": "5.3.0",
+    "@fontsource/plus-jakarta-sans": "5.3.0",
+    "@mediapipe/tasks-vision": "1.0.1",
+    "pixi.js": "8.20.1"
+  },
+  "devDependencies": {
+    "typescript": "7.0.2",
+    "vite": "8.3.0"
+  }
+}

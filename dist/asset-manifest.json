@@ -1,0 +1,282 @@
+{
+  "version": "38fcd43ea3863e42",
+  "totalBytes": 71900807,
+  "files": [
+    {
+      "url": "/apple-touch-icon.png",
+      "size": 20813
+    },
+    {
+      "url": "/assets/BG.jpg",
+      "size": 817338
+    },
+    {
+      "url": "/assets/BitmapFont-DD9n0WIK.js",
+      "size": 48
+    },
+    {
+      "url": "/assets/BufferResource-5fnSTEB1.js",
+      "size": 11072
+    },
+    {
+      "url": "/assets/Cache-E0YTT1Pq.js",
+      "size": 1098
+    },
+    {
+      "url": "/assets/CanvasPool-CUZn_ZF5.js",
+      "size": 756
+    },
+    {
+      "url": "/assets/CanvasRenderer-Dzjrh5va.js",
+      "size": 52
+    },
+    {
+      "url": "/assets/Filter-34XOcAFR.js",
+      "size": 38873
+    },
+    {
+      "url": "/assets/GCManagedHash-C7ZScoFo.js",
+      "size": 19273
+    },
+    {
+      "url": "/assets/Geometry-D8jkJNKB.js",
+      "size": 65451
+    },
+    {
+      "url": "/assets/GraphicsContext-luqzP0mt.js",
+      "size": 61672
+    },
+    {
+      "url": "/assets/HandLandmarkerManager-h94vmzNs.js",
+      "size": 154446
+    },
+    {
+      "url": "/assets/RenderTargetSystem-frzlgzOz.js",
+      "size": 57393
+    },
+    {
+      "url": "/assets/WebGLRenderer-BnkuFsaQ.js",
+      "size": 51
+    },
+    {
+      "url": "/assets/WebGPURenderer-DWH7-Xcw.js",
+      "size": 52
+    },
+    {
+      "url": "/assets/backsound-BLJZtoH5.mp3",
+      "size": 6154569
+    },
+    {
+      "url": "/assets/browserAll-BKXAgmuT.js",
+      "size": 42660
+    },
+    {
+      "url": "/assets/canvasUtils-lXGwQ1Jx.js",
+      "size": 5977
+    },
+    {
+      "url": "/assets/characters/wayang01/body.png",
+      "size": 2194527
+    },
+    {
+      "url": "/assets/characters/wayang01/left_forearm_hand.png",
+      "size": 1056644
+    },
+    {
+      "url": "/assets/characters/wayang01/left_upper_arm.png",
+      "size": 207387
+    },
+    {
+      "url": "/assets/characters/wayang01/main_rod.png",
+      "size": 265255
+    },
+    {
+      "url": "/assets/characters/wayang01/reference.png",
+      "size": 2452902
+    },
+    {
+      "url": "/assets/characters/wayang01/right_forearm_hand.png",
+      "size": 313483
+    },
+    {
+      "url": "/assets/characters/wayang01/right_upper_arm.png",
+      "size": 122622
+    },
+    {
+      "url": "/assets/characters/wayang02/body.png",
+      "size": 2434611
+    },
+    {
+      "url": "/assets/characters/wayang02/forearm_hand.png",
+      "size": 404766
+    },
+    {
+      "url": "/assets/characters/wayang02/main_rod.png",
+      "size": 56074
+    },
+    {
+      "url": "/assets/characters/wayang02/reference.png",
+      "size": 2637237
+    },
+    {
+      "url": "/assets/characters/wayang02/upper_arm.png",
+      "size": 155569
+    },
+    {
+      "url": "/assets/characters/wayang03/body.png",
+      "size": 1540923
+    },
+    {
+      "url": "/assets/characters/wayang03/left_forearm_hand.png",
+      "size": 360028
+    },
+    {
+      "url": "/assets/characters/wayang03/left_upper_arm.png",
+      "size": 160654
+    },
+    {
+      "url": "/assets/characters/wayang03/main_rod.png",
+      "size": 69214
+    },
+    {
+      "url": "/assets/characters/wayang03/reference.png",
+      "size": 2152817
+    },
+    {
+      "url": "/assets/characters/wayang03/right_forearm_hand.png",
+      "size": 263716
+    },
+    {
+      "url": "/assets/characters/wayang03/right_upper_arm.png",
+      "size": 108700
+    },
+    {
+      "url": "/assets/characters/wayang04/body.png",
+      "size": 1252497
+    },
+    {
+      "url": "/assets/characters/wayang04/left_forearm_hand.png",
+      "size": 331530
+    },
+    {
+      "url": "/assets/characters/wayang04/left_upper_arm.png",
+      "size": 106035
+    },
+    {
+      "url": "/assets/characters/wayang04/main_rod.png",
+      "size": 82809
+    },
+    {
+      "url": "/assets/characters/wayang04/reference.png",
+      "size": 1605410
+    },
+    {
+      "url": "/assets/characters/wayang04/right_forearm_hand.png",
+      "size": 273828
+    },
+    {
+      "url": "/assets/characters/wayang04/right_upper_arm.png",
+      "size": 84665
+    },
+    {
+      "url": "/assets/cormorant-garamond-latin-600-normal-2CBVLo0M.woff",
+      "size": 31304
+    },
+    {
+      "url": "/assets/cormorant-garamond-latin-600-normal-Co1r35X9.woff2",
+      "size": 23396
+    },
+    {
+      "url": "/assets/getTextureBatchBindGroup-BuDj_NYx.js",
+      "size": 342
+    },
+    {
+      "url": "/assets/index-ByNovNHN.css",
+      "size": 1008
+    },
+    {
+      "url": "/assets/index-CS9-6iDB.js",
+      "size": 7216
+    },
+    {
+      "url": "/assets/init-r3IgM0Ro.js",
+      "size": 15568
+    },
+    {
+      "url": "/assets/main-CvUrpBoz.js",
+      "size": 289032
+    },
+    {
+      "url": "/assets/main-DXys41-4.css",
+      "size": 31159
+    },
+    {
+      "url": "/assets/plus-jakarta-sans-latin-400-normal-BDKaGhyp.woff",
+      "size": 15728
+    },
+    {
+      "url": "/assets/plus-jakarta-sans-latin-400-normal-Dhut76fR.woff2",
+      "size": 11816
+    },
+    {
+      "url": "/assets/plus-jakarta-sans-latin-600-normal-BR_Ojra4.woff",
+      "size": 16084
+    },
+    {
+      "url": "/assets/plus-jakarta-sans-latin-600-normal-DLTa1BUW.woff2",
+      "size": 12188
+    },
+    {
+      "url": "/assets/plus-jakarta-sans-latin-700-normal-CfpNZvy6.woff2",
+      "size": 12244
+    },
+    {
+      "url": "/assets/plus-jakarta-sans-latin-700-normal-DqEcQeE5.woff",
+      "size": 16136
+    },
+    {
+      "url": "/assets/webworkerAll-DzvS2vzI.js",
+      "size": 54
+    },
+    {
+      "url": "/favicon.ico",
+      "size": 7197
+    },
+    {
+      "url": "/favicon.svg",
+      "size": 979
+    },
+    {
+      "url": "/mediapipe/wasm/vision_wasm_internal.js",
+      "size": 323377
+    },
+    {
+      "url": "/mediapipe/wasm/vision_wasm_internal.wasm",
+      "size": 11756954
+    },
+    {
+      "url": "/mediapipe/wasm/vision_wasm_module_internal.js",
+      "size": 323415
+    },
+    {
+      "url": "/mediapipe/wasm/vision_wasm_module_internal.wasm",
+      "size": 11756972
+    },
+    {
+      "url": "/mediapipe/wasm/vision_wasm_nosimd_internal.js",
+      "size": 323180
+    },
+    {
+      "url": "/mediapipe/wasm/vision_wasm_nosimd_internal.wasm",
+      "size": 10960242
+    },
+    {
+      "url": "/models/README.md",
+      "size": 614
+    },
+    {
+      "url": "/models/hand_landmarker.task",
+      "size": 7819105
+    }
+  ]
+}
