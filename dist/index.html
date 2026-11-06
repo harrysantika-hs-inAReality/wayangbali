@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#2b1d14" />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <title>Wayang Bali</title>
+    <script type="module" crossorigin src="/assets/index-CO3kARpx.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-ByNovNHN.css">
+  </head>
+  <body>
+    <main id="app" aria-label="Wayang Bali">
+      <video id="camera-preview" autoplay muted playsinline hidden aria-label="Mirrored camera preview"></video>
+      <div id="ui" class="screen" role="region" aria-label="Kontrol wayang">Memuat aplikasi...</div>
+    </main>
+    <section id="download-screen" aria-live="polite" aria-label="Persiapan aplikasi">
+      <div class="download-card">
+        <svg class="download-mark" viewBox="12 4 40 55" aria-hidden="true">
+          <path d="M32 6C38 15 50 27 50 39.5C50 48 43 52 32 52C21 52 14 48 14 39.5C14 27 26 15 32 6ZM24 51h16l2 6H22z"/>
+          <path d="M32 47V20M32 38L23.5 32M32 38L40.5 32M32 29.5L26 25M32 29.5L38 25" fill="none" stroke="#f3d39a" stroke-width="2.6" stroke-linecap="round"/>
+        </svg>
+        <h1 id="download-title">Mohon tunggu, sedang menyiapkan aset dan aplikasi</h1>
+        <p id="download-status">Memeriksa paket aplikasi…</p>
+        <p id="download-percent" aria-hidden="true">0%</p>
+        <div class="download-track" role="progressbar" aria-label="Progres unduhan" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <span id="download-progress"></span>
+        </div>
+        <p id="download-detail" class="download-detail">Mohon jangan tutup halaman ini.</p>
+        <button id="download-retry" type="button" hidden>Coba lagi</button>
+      </div>
+    </section>
+    <style>#download-screen{z-index:9999;color:#eadbc2;background:radial-gradient(60% 50% at 50% 38%,#5a3b22 0%,#3d2a1c 40%,#2b1d14 75%);place-items:center;padding:24px;font-family:Plus Jakarta Sans,system-ui,sans-serif;transition:opacity .35s;display:grid;position:fixed;inset:0}#download-screen.is-hidden{opacity:0;pointer-events:none}.download-card{text-align:center;width:min(420px,100%)}.download-mark{fill:#2b1d14;filter:drop-shadow(0 0 28px #f6d79a99);background:radial-gradient(circle at 50% 60%,#fff4d9 0,#e3b77a 45%,#0000 70%);border-radius:50%;width:clamp(64px,14vw,84px);margin:0 auto 22px;padding:14px;display:block}#download-title{letter-spacing:-.01em;margin:0;font:600 clamp(30px,7vw,42px)/1.05 Cormorant Garamond,Georgia,serif}#download-status{color:#bba98d;min-height:22px;margin:10px 0 18px;font-size:14px;line-height:1.5}#download-percent{color:#d4ae61;font-variant-numeric:tabular-nums;margin:0 0 10px;font:600 clamp(44px,10vw,60px)/1 Cormorant Garamond,Georgia,serif}.download-track{background:repeating-linear-gradient(90deg,#3c341426 0 1px,#0000 1px 9px),linear-gradient(#8e8a55,#6d6838);border-radius:999px;height:12px;overflow:hidden;box-shadow:inset 0 1px 3px #0006}#download-progress{border-radius:inherit;background:linear-gradient(90deg,#a87826,#d4ae61 70%,#fff4d9);width:0;height:100%;display:block;box-shadow:0 0 12px #ffe4a0b3}.download-detail{color:#bba98d;font-variant-numeric:tabular-nums;margin:12px 0 0;font-size:13px}#download-retry{color:#2b1d14;cursor:pointer;background:#d4ae61;border:1px solid #d4ae61;border-radius:999px;min-height:46px;margin-top:20px;padding:11px 24px;font:600 15px Plus Jakarta Sans,system-ui,sans-serif}#download-retry:focus-visible{outline-offset:3px;outline:3px solid #f2c46b}</style>
+  </body>
+</html>
